@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RestaurantDetails(){
     return(
         <main>
@@ -5,9 +7,9 @@ export default function RestaurantDetails(){
     <main className="max-w-screen-2xl m-auto bg-white">
       {/* NAVBAR */}
       <nav className="bg-white p-2 flex justify-between">
-        <a href="" className="font-bold text-gray-700 text-2xl">
-          OpenTable
-        </a>
+      <Link href="/" className="font-bold text-gray-700 text-2xl">
+              OpenTable
+            </Link>
 
         <div className="flex ">
           <button className="bg-blue-400 text-white rounded mr-3 p-1 px-4 ">
@@ -26,11 +28,11 @@ export default function RestaurantDetails(){
       {/* DESCRIPTION PORTION */}
       <div className="flex w-2/3 m-auto -mt-10 rounded  ">
         <div className="w-[70%] border rounded p-2 bg-white   shadow ">
-          <nav className="border-b text-reg ">
-            <a href="" className="mr-3">
+        <nav className="border-b text-reg pb-2 ">
+            <Link href="/restaurant/milestone-grill" className="mr-3">
               Overview
-            </a>
-            <a href="">Menu</a>
+            </Link>
+            <Link href="/restaurant/milestone-grill/menu">Menu</Link>
           </nav>
           <h2 className="text-5xl font-bold border-b p-4 ">
             Milesstone Grill

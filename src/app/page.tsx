@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,9 +11,9 @@ export default function Home() {
     <main className="max-w-screen-2xl m-auto bg-white">
       {/* NAVBAR */}
       <nav className="bg-white p-2 flex justify-between">
-        <a href="" className="font-bold text-gray-700 text-2xl">
-          OpenTable
-        </a>
+      <Link href="/" className="font-bold text-gray-700 text-2xl">
+              OpenTable
+            </Link>
 
         <div className="flex ">
           <button className="bg-blue-400 text-white rounded mr-3 p-1 px-4 ">
@@ -47,6 +48,7 @@ export default function Home() {
         {/* Cards */}
         <div className=" flex px-36 py-10">
           {/* card */}
+          <Link href="/restaurant/milestones-grill">
           <div className="w-64 h-72  overflow-hidden cursor-pointer border">
             <img src="https://resizer.otstatic.com/v2/photos/wide-huge/2/31852905.jpg" className="w-full h-36"></img>
             <h2 className="p-1 font-bold">Milestones Grill</h2>
@@ -62,6 +64,7 @@ export default function Home() {
 
             <p className="text-small mt-1 font-bold  ">Book 3 times today</p>
           </div>
+          </Link>
           {/* card */}
         </div>
         {/* Cards */}
