@@ -1,11 +1,20 @@
+"use client"
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+ 
+ 
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const[location,setLocation]=useState("");
+  const router=useRouter();
+ 
   return (
     <main className="bg-gray-100 min-h-screen w-screen ">
     <main className="max-w-screen-2xl m-auto bg-white">
@@ -36,8 +45,17 @@ export default function Home() {
               className="rounded p-2 w-[450px] mr-3 "
               type="text"
               placeholder="State, city or town"
+              value={location}
+              onChange={(e)=>{setLocation(e.target.value)}}
+              
             />
-            <button className="bg-red-600 rounded py-2 px-9  text-white">
+            <button className="bg-red-600 rounded py-2 px-9  text-white" onClick={()=>{
+              if(location==="banana")return;
+              router.push("search")
+            }}
+            
+
+              >
               Let's go
             </button>
           </div>
