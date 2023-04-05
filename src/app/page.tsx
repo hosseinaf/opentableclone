@@ -11,6 +11,7 @@ export interface RestaurantCardType{
   cuisine:Cuisine,
   location:Location,
   price:PRICE
+  slug:string
 }
 
 const prisma=new PrismaClient();
@@ -23,7 +24,9 @@ const fetchRestaurants =async ():Promise<RestaurantCardType[]>=>{
       main_image:true,
       cuisine:true,
       location:true,
-      price:true 
+      price:true,
+      slug:true
+      
     }
   });
   return restaurants;

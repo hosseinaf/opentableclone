@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 
-export default function Images() {
+export default function Images({ images }: { images: string[] }) {
   return (
     <div>
-        {/* IMAGES */}
-        <div className="border-b pb-2 mb-2">
-            <h2 className="font-bold text-3xl mt-5 ml-2 ">5 photos</h2>
-          </div>
+      {/* IMAGES */}
+      <div className="border-b pb-2 mb-2">
+        <h2 className="font-bold text-3xl mt-5 ml-2 ">{images.length} photo{images.length>=1 ? "s":""}</h2>
+      </div>
 
-          <div className="flex flex-wrap p-2 ">
-            <img
+      <div className="flex flex-wrap p-2 ">
+        {images.map((image) => (
+          <img className="w-56 h-44 mr-1" src={image} />
+        ))}
+        {/* <img
               className="w-56 h-44 mr-1 mb-1"
               src="https://resizer.otstatic.com/v2/photos/xlarge/3/41701449.jpg"
               alt=""
@@ -33,10 +36,10 @@ export default function Images() {
               className="w-56 h-44"
               src="https://resizer.otstatic.com/v2/photos/xlarge/2/41701454.jpg"
               alt=""
-            />
-          </div>
+            /> */}
+      </div>
 
-          {/* IMAGES */}
+      {/* IMAGES */}
     </div>
-  )
+  );
 }
