@@ -1,13 +1,14 @@
+import { Item } from '@prisma/client'
 import React from 'react'
 
-export default function MenuCard() {
+export default function MenuCard({item}:{item:Item}) {
   return (
-    <div>
-         <div className="border w-[40%] p-2 ">
-            <h2 className="font-bold">Surf and Turf</h2>
-            <p>A well done steak with lobster and rice</p>
-            <p className="mt-4 font-bold">$80.00</p>
+ 
+         <div className="border w-[49%] p-2 mb-2 ">
+            <h2 className="font-bold">{item.name}</h2>
+            <p className='font_light mt-1 text-sm'>{item.description}</p>
+            <p className="mt-7 font-bold">{item.price}</p>
           </div>
-    </div>
+    
   )
 }

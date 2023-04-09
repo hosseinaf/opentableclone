@@ -10,44 +10,44 @@ import Reviews from "./components/Reviews";
 import Reservation from "./components/Reservation";
 import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
 
-const prisma =new PrismaClient();
-
-interface Restaurant{
-  id:number,
-      name:string,
-      images:string[],
-      description:string,
-      slug:string
+interface Restaurant {
+  id: number;
+  name: string;
+  images: string[];
+  description: string;
+  slug: string;
 }
-const fetchRestaurantsBySlug=async (slug:string):Promise<Restaurant>=>{ 
-  const restaurant=await prisma.restaurant.findUnique({
-    where:{
-      slug
+const fetchRestautantsBySlug = async (slug: string): Promise<Restaurant> => {
+  const restaurant = await prisma.restaurant.findUnique({
+    where: {
+      slug,
     },
-    select:{
-      id:true,
-      name:true,
-      images:true,
-      description:true,
-      slug:true
-
-    }
+    select: {
+      id: true,
+      name: true,
+      images: true,
+      description: true,
+      slug: true,
+    },
   });
-
-  if(!restaurant){
-    throw new Error
+  if (!restaurant) {
+    throw new Error();
   }
-   return restaurant;
-}
+  return restaurant;
+};
 
-export default async function RestaurantDetails({params}:{params:{slug:string}}) {
-  const restaurant=await fetchRestaurantsBySlug(params.slug);
-  console.log(restaurant)
+export default async function RestaurantDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const restaurant = await fetchRestautantsBySlug(params.slug);
   return (
     <main className="flex">
       <div className="w-[70%] border rounded p-2   shadow ">
-        <RestaurantNavbar  slug={restaurant.slug}/>
+        <RestaurantNavbar slug={restaurant.slug} />
         <Title name={restaurant.name} />
         <Rating />
         <Description description={restaurant.description} />
