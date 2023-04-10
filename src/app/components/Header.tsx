@@ -4,6 +4,15 @@ import { useRouter } from "next/navigation";
 export default function () {
   const [location, setLocation] = useState("");
   const router = useRouter();
+
+
+
+ 
+
+
+
+
+
   return (
     <main>
       {/* HEADER */}
@@ -26,7 +35,12 @@ export default function () {
             className="bg-red-600 rounded py-2 px-9  text-white"
             onClick={() => {
               if (location === "banana") return;
-              router.push("search");
+              router.push(`/search?city=${location}`);
+             setLocation("");
+
+
+            
+             
             }}
           >
             Let's go

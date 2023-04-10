@@ -34,7 +34,7 @@ export default async function ResturantMenu({
     <>
       <div className="w-[100%] border rounded p-2 bg-white   shadow ">
         <RestaurantNavbar slug={params.slug} />
-       <MenuCom menu={menu} />  
+        <MenuCom menu={menu} />  
           
       </div>
     </>
