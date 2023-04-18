@@ -5,14 +5,6 @@ export default function () {
   const [location, setLocation] = useState("");
   const router = useRouter();
 
-
-
- 
-
-
-
-
-
   return (
     <main>
       {/* HEADER */}
@@ -30,23 +22,14 @@ export default function () {
             onChange={(e) => {
               setLocation(e.target.value);
             }}
-
-         
-
-
-
           />
           <button
             className="bg-red-600 rounded py-2 px-9  text-white"
             onClick={() => {
               if (location === "banana") return;
               router.push(`/search?city=${location}`);
-              
-             setLocation("");
 
-
-            
-             
+              setLocation("");
             }}
           >
             Let's go
