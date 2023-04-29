@@ -62,7 +62,7 @@ export async function POST(request: Request) {
           hello: "Unauthorized request(token invalid) ",
         }),
         {
-          status: 200,
+          status: 401,
           headers: {
             "content-type": "application/json",
           },

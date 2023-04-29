@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
+ 
 
 const style = {
   position: "absolute" as "absolute",
@@ -21,6 +22,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+ 
 
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignIn ? signinContent : signupContent;
@@ -32,7 +34,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
       [e.target.name]:e.target.value
     })
 
-
+ 
   }
 
   const[inputs,setInputs]=useState({
@@ -45,6 +47,8 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
 
   })
 
+  //const[disabled,setDisabled]=useState(true) 
+
   return (
     <div>
       <button
@@ -52,11 +56,13 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
         className={`${renderContent(
           "bg-blue-400 text-white ",
           ""
-        )}border rounded p-1 px-4 mr-3`}
+        )}border rounded p-1 px-4 mr-3   ` }
         onClick={handleOpen}
+        // disabled={disabled}
       >
         {/* {isSignIn?"Sign in":"Sign out"} */}
         {renderContent("Sign in", "Sign up")}
+        
       </button>
       <Modal
         open={open}
