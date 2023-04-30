@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
+import { AuthenticationContext } from "../context/AuthContext";
+import { Alert, CircularProgress } from "@mui/material";
  
 
 const style = {
@@ -19,10 +21,11 @@ const style = {
 };
 
 export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
+  // const{error,loading,data,setAuthState}=useContext(AuthenticationContext)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
- 
+  const{data,error,loading,setAuthState}=useContext(AuthenticationContext);
 
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignIn ? signinContent : signupContent;
@@ -40,10 +43,10 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
   const[inputs,setInputs]=useState({
     firstName:"hossein",
     lastName:"aflaki",
-    email:"h@aflaki",
+    email:"lebrodwdssn@hotddmail.com",
     phone:"0990999",
     city:"rsht",
-    password:"1937"
+    password:"paSsword432!!!1"
 
   })
 
@@ -71,16 +74,25 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-         <div className="text-center font-bold border-b pb-2">
-          {renderContent("Sign In","Create Account")}
-          {inputs.email}
-         </div>
-         <div  >
-          <h2 className="text-2xl text-center font-light mt-3">
-            {renderContent("Log Into Your Account","Create Your OpenTable Account")}
-          </h2>
-          <AuthModalInputs inputs={inputs} handleChangeInput={handleChangeInput} isSignIn={isSignIn} />
-         </div>
+          {loading?<div className="py-24 px-2 h-[600px] flex justify-center"> <CircularProgress /></div>:
+              <div>
+                {
+                  error ? <Alert className="mb-4" severity="error">{error}</Alert>:null
+                }
+               
+              <div className="text-center font-bold border-b pb-2">
+              {renderContent("Sign In","Create Account")}
+             </div>
+             <div>
+              <h2 className="text-2xl text-center font-light mt-3">
+                {renderContent("Log Into Your Account","Create Your OpenTable Account")}
+              </h2>
+              <AuthModalInputs inputs={inputs} handleChangeInput={handleChangeInput} isSignIn={isSignIn} />
+             </div>
+              </div>
+          
+          }
+        
         </Box>
       </Modal>
     </div>

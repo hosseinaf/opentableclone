@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 interface Props {
@@ -22,6 +22,8 @@ export default function AuthModalInputs({
 }: Props) {
   const [disabled, setDisabled] = useState(true);
   const{signin}=useAuth()
+  
+
 
   useEffect(() => {
     if (isSignIn) {
@@ -33,7 +35,7 @@ export default function AuthModalInputs({
     else{
       if(inputs.firstName && inputs.lastName && inputs.email && inputs.email && inputs.password && inputs.password){
         return setDisabled(false);
-      }
+      }  
     }
     setDisabled(true);
   }, [inputs]);
