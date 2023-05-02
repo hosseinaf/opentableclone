@@ -35,7 +35,7 @@ export default function AuthContext({
   const [authState, setAuthState] = useState<State>({
     loading: false,
     data: null,
-    error: "Email or password is invalid",
+    error: "",
   });
   return (
     <AuthenticationContext.Provider

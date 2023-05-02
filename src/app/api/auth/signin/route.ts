@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   if (!user) {
     return new Response(
       JSON.stringify({
-        errorMessage: "Email or Password is invalid",
+        errorMessage: "Email or Password is invalid(NOT FOUND EMAIL)",
       }),
       {
         status: 401,
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
   if (!isMatch) {
     return new Response(
       JSON.stringify({
-        errorMessage: "Email or Password is invalid",
+        errorMessage: "Email or Password is invalid(NOT FOUND PASSS)",
       }),
       {
         status: 401,

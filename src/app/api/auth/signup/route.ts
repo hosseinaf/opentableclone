@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       errorMessage: "Last name is invalid",
     },
     {
-      valid: validator.isLength(email),
+      valid: validator.isEmail(email),
       errorMessage: "email is invalid",
     },
     {
@@ -124,7 +124,13 @@ export async function POST(request: Request) {
   //last return
   return new Response(
     JSON.stringify({
-     hello: token,
+     //hello: token,
+     firstName: user.first_name,
+     lastName: user.last_name,
+     email: user.email,
+     phone: user.phone,
+     city: user.city,
+     token: token,
     }),
     {
       status: 200,
