@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import useAuth from "../../../hooks/useAuth";
+ 
 
 interface Props {
   inputs: {
@@ -20,34 +20,8 @@ export default function AuthModalInputs({
   handleChangeInput,
   isSignIn,
 }: Props) {
-  const [disabled, setDisabled] = useState(true);
-  const { signin } = useAuth();
+  
 
-  useEffect(() => {
-    if (isSignIn) {
-      if (inputs.password && inputs.email) {
-        return setDisabled(false);
-      }
-    } else {
-      if (
-        inputs.firstName &&
-        inputs.lastName &&
-        inputs.email &&
-        inputs.email &&
-        inputs.password &&
-        inputs.password
-      ) {
-        return setDisabled(false);
-      }
-    }
-    setDisabled(true);
-  }, [inputs]);
-
-  const handleClick = () => {
-    if (isSignIn) {
-      signin({ email: inputs.email, password: inputs.password });
-    }
-  };
   return (
     <div className="h-[600px]">
       {isSignIn ? null : (
@@ -113,15 +87,7 @@ export default function AuthModalInputs({
         />
       </div>
 
-      <div className="mt-3">
-        <button
-          className="w-full text-white bg-red-600 py-3 px-2 rounded disabled:bg-gray-400"
-          disabled={disabled}
-          onClick={handleClick}
-        >
-          SIGN IN
-        </button>
-      </div>
+   
     </div>
   );
 }

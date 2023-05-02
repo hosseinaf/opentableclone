@@ -91,7 +91,7 @@ export async function POST(request: Request) {
         errorMessage: "Email is associated with another account",
       }),
       {
-        status: 400,
+        status: 401,
         headers: {
           "content-type": "application/json",
         },
@@ -124,7 +124,7 @@ export async function POST(request: Request) {
   //last return
   return new Response(
     JSON.stringify({
-      hello: token,
+     hello: token,
     }),
     {
       status: 200,

@@ -31,11 +31,11 @@ export async function POST(request: Request) {
   });
 
 
-  console.log("sign in")
+ // console.log("sign in")
   if (errors.length) {
     // return status(400).json({ errorMessage: errors[0] });
     return new Response(JSON.stringify({ errorMessage: errors[0] }), {
-      status: 400,
+      status: 401,
       headers: {
         "content-type": "application/json",
       },
@@ -80,6 +80,7 @@ export async function POST(request: Request) {
     );
   }
 
+  //create new token
   const alg = "HS256";
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
