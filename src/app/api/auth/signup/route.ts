@@ -19,6 +19,8 @@ export async function POST(request: Request) {
     await request.json();
   const errors: string[] = [];
  
+
+  //validation schema
   const validationScheme = [
     {
       valid: validator.isLength(firstName, {
@@ -55,15 +57,19 @@ export async function POST(request: Request) {
     },
   ];
 
+
+  //validation schema extraction
   validationScheme.forEach((check) => {
     if (!check.valid) {
       errors.push(check.errorMessage);
     }
   });
 
+
+  //if error exist
   if (errors.length) {
-    // return status(400).json({ errorMessage: errors[0] });
-    return new Response(JSON.stringify({ errorMessage: errors[0] }), {
+    return new Response(JSON.stringify({ errorMessage: errors[0]
+     }), {
       status: 400,
       headers: {
         "content-type": "application/json",
@@ -71,6 +77,8 @@ export async function POST(request: Request) {
     });
   }
 
+
+  //if email exist before
   const userWithEmail = await prisma.user.findUnique({
     where: {
       email,
@@ -111,6 +119,9 @@ export async function POST(request: Request) {
     .setExpirationTime("24h")
     .sign(secret);
 
+
+
+  //last return
   return new Response(
     JSON.stringify({
       hello: token,

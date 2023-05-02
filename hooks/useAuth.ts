@@ -1,5 +1,6 @@
 import { AuthenticationContext } from "@/app/context/AuthContext";
 import axios from "axios";
+import { setCookie } from "cookies-next";
 import { useContext } from "react";
 
 const useAuth = () => {
@@ -26,6 +27,7 @@ const useAuth = () => {
           password,
         }
       );
+      setCookie("jwt", response.data.token, { maxAge: 60 * 6 * 24 });
       console.log(response);
       setAuthState({
         data: response.data,

@@ -21,32 +21,33 @@ export default function AuthModalInputs({
   isSignIn,
 }: Props) {
   const [disabled, setDisabled] = useState(true);
-  const{signin}=useAuth()
-  
-
+  const { signin } = useAuth();
 
   useEffect(() => {
     if (isSignIn) {
-      if (inputs.password && inputs.email){
+      if (inputs.password && inputs.email) {
         return setDisabled(false);
-
-      } 
-    }
-    else{
-      if(inputs.firstName && inputs.lastName && inputs.email && inputs.email && inputs.password && inputs.password){
+      }
+    } else {
+      if (
+        inputs.firstName &&
+        inputs.lastName &&
+        inputs.email &&
+        inputs.email &&
+        inputs.password &&
+        inputs.password
+      ) {
         return setDisabled(false);
-      }  
+      }
     }
     setDisabled(true);
   }, [inputs]);
 
-const handleClick=()=>{
-
-  if(isSignIn){
-    signin({email:inputs.email,password:inputs.password})
-
-  }
-}
+  const handleClick = () => {
+    if (isSignIn) {
+      signin({ email: inputs.email, password: inputs.password });
+    }
+  };
   return (
     <div className="h-[600px]">
       {isSignIn ? null : (
