@@ -1,4 +1,5 @@
 import React from 'react'
+import{partySize} from "../../../../../data"
 
 export default function 
 () {
@@ -15,8 +16,13 @@ export default function
                 Party size
               </label>
               <select name="" id="" className="mt-3 border-b pb-2">
-                <option value="">1 person</option>
-                <option value="">2 people</option>
+                {partySize.map(size=>(
+                   <option value={size.value}>{size.label}</option>
+
+                ))
+
+                }
+                
               </select>
             </div>
              {/* party size */}
