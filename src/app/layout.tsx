@@ -2,6 +2,7 @@ import Head from "next/head";
 import NavBar from "./components/NavBar";
 import "./globals.css";
 import AuthContext from "./context/AuthContext";
+import "react-datepicker/dist/react-datepicker.css"
 
 export const metadata = {
   title: "Create Next App",
