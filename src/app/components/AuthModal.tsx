@@ -31,6 +31,8 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
     return isSignIn ? signinContent : signupContent;
   };
 
+  //console.log("heelooo")
+
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({
       ...inputs,
@@ -116,6 +118,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
               <div className="text-center font-bold border-b pb-2">
                 {renderContent("Sign In", "Create Account")}
                 {/* {inputs.email} */}
+                <p>{data?.firstName}{data?.lastName}</p>
               </div>
               <div>
                 <h2 className="text-2xl text-center font-light mt-3">

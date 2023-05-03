@@ -55,7 +55,7 @@ const useAuth = () => {
       firstName,
       lastName,
       city,
-      phone
+      phone,
     }: {
       email: string;
       password: string;
@@ -63,7 +63,6 @@ const useAuth = () => {
       lastName: string;
       city: string;
       phone: string;
-
     },
     handleClose: () => void
   ) => {
@@ -82,7 +81,6 @@ const useAuth = () => {
           lastName,
           city,
           phone,
-    
         }
       );
       setCookie("jwt", response.data.token, { maxAge: 60 * 6 * 24 });
@@ -103,9 +101,11 @@ const useAuth = () => {
     }
   };
 
+
   return {
     signIn,
     signUp,
+    
   };
 };
 export default useAuth;

@@ -7,7 +7,7 @@ import { use } from "react";
 import * as jose from "jose";
 import jwt from "jsonwebtoken";
  
-export async function POST(request: Request) {
+export async function GET(request: Request) {
   const bearerToken = request.headers.get("authorization") as string;
   const token = bearerToken.split(" ")[1];
 
@@ -34,12 +34,37 @@ export async function POST(request: Request) {
         first_name:true,
         last_name:true,
         email:true,
-        phone:true
+        phone:true,
+        city:true
+
     }
-  })
+  })  
+  if(!user){ 
+    return new Response(
+      JSON.stringify({
+        hello:"User not found",
+        
+      }),
+      {
+        status: 401,
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+  }
+
   return new Response(
     JSON.stringify({
-      hello: user,
+    //   hello: user,
+    id:user.id,
+    firstName:user.first_name,
+    lastName:user.last_name,
+    phone:user.phone,
+    city:user.city
+
+
+      
     }),
     {
       status: 200,
