@@ -4,7 +4,7 @@ import { partySize,times } from "../../../../../data";
 import ReactDatePicker from "react-datepicker";
 //import { times } from "../../../../../data/times";
 
-export default function () {
+export default function Reservation ({openTime,closeTime}:{openTime:string,closeTime:string}) {
   const[selectedDate,setSelectedDate]=useState<Date | null>(new Date())
 
   const handleChangeDate=(date:Date |null)=>{
@@ -14,6 +14,33 @@ export default function () {
      }
      return setSelectedDate(null)
   }
+
+
+  const filterTimeByRestaurantOpenWindow=()=>{
+    //openTime=14:30:00.000Z 2:30PM
+    //closeTime=21:30:00.000Z 9:30PM
+
+    const timesWithInWindow:typeof times =[]
+    let isWithinWindow=false;
+    times.forEach(time=>{
+      if(time.time===openTime){ 
+        isWithinWindow=true;
+
+      }
+      if(isWithinWindow){
+        timesWithInWindow.push(time)
+
+      }
+      if(time.time===closeTime){
+        isWithinWindow=false;
+      }
+
+    })
+
+    return timesWithInWindow
+
+  }
+
   return (
     <div>
       <div className="w-[85%] bg-white mx-auto border rounded p-4">
@@ -46,10 +73,9 @@ export default function () {
               Time
             </label>
             <select name="" id="" className="mt-3 border-b pb-2">
-              {/* <option value="">7:30 AM</option>
-              <option value="">9:30 AM</option> */}
+               
               {
-                times.map(time=>(
+                filterTimeByRestaurantOpenWindow().map(time=>(
                   <option value={time.time}>{time.displayTime}</option>
                 ))
               }

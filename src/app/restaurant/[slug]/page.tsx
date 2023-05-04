@@ -18,8 +18,10 @@ interface Restaurant {
   name: string;
   images: string[];
   description: string;
+  open_time: string;
+  close_time: string;
   slug: string;
-  reviews:Review[]
+  reviews: Review[];
 }
 const fetchRestautantsBySlug = async (slug: string): Promise<Restaurant> => {
   const restaurant = await prisma.restaurant.findUnique({
@@ -32,12 +34,14 @@ const fetchRestautantsBySlug = async (slug: string): Promise<Restaurant> => {
       images: true,
       description: true,
       slug: true,
-      reviews:true
+      reviews: true,
+      open_time: true,
+      close_time: true,
     },
   });
   if (!restaurant) {
     // throw new Error("cannot find restaurant");
-    notFound()
+    notFound();
   }
   return restaurant;
 };
@@ -60,7 +64,10 @@ export default async function RestaurantDetails({
       </div>
 
       <div className="w-[27%]   ">
-        <Reservation />
+        <Reservation
+          openTime={restaurant.open_time}
+          closeTime={restaurant.close_time}
+        />
       </div>
     </main>
   );

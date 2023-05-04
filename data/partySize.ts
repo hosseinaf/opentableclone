@@ -51,6 +51,6 @@ export  const partySize=[
         label:"10 people"
 
     }
-
+ 
 ]  
   
