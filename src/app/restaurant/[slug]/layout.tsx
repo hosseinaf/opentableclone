@@ -7,7 +7,7 @@ export default function RestaurantLayout({
   children: React.ReactNode;
   params:{slug:string}
 }) {
-  console.log("params",params)
+  // console.log("params",params)
   return(
     <main>
   <Header name={params.slug}/>
