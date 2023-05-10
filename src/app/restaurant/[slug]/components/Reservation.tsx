@@ -6,6 +6,7 @@ import ReactDatePicker from "react-datepicker";
 import { CircularProgress } from "@mui/material";
 import useAvailabilities from "../../../../../hooks/useAvailabilties";
 import Link from "next/link";
+import { convertToDisplayTime } from "../../../../../utils/ConvertToDisplayTime";
 //import { times } from "../../../../../data/times";
 
 export default function Reservation({
@@ -140,7 +141,7 @@ export default function Reservation({
                     href={`/reserve/${slug}?data=${day}T${time.time}&partySize=${partySize}`}
                     className="bg-red-600 cursor-pointer  p-2 w-24 text-center text-white mb-3 rounded mr-3"
                   >
-                    <p className="text-sm font-bold">{time.time}</p>
+                    <p className="text-sm font-bold">{convertToDisplayTime(time.time)}</p>
                   </Link>
                 ) : (
                   <p className="bg-grey-300 p-2 w-24 mb-3 rounded mr-3"> );</p>
